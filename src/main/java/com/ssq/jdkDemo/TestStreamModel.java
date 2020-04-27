@@ -1,4 +1,4 @@
-package com.ssq.demo.jdkDemo;
+package com.ssq.jdkDemo;
 
 import lombok.Data;
 

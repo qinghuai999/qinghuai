@@ -1,6 +1,4 @@
-package com.ssq.demo.jdkDemo;
-
-import org.thymeleaf.expression.Lists;
+package com.ssq.jdkDemo;
 
 import java.util.ArrayList;
 import java.util.List;
