@@ -1,9 +1,10 @@
-package com.ssq.jdkDemo;
+package com.ssq.demo.jdkDemo;
 
 import lombok.Data;
 
 @Data
 public class TestStreamModel {
+
     private int id;
 
     private String name;

@@ -1,4 +1,4 @@
-package com.ssq.jdkDemo;
+package com.ssq.demo.jdkDemo;
 
 import java.util.ArrayList;
 import java.util.List;
