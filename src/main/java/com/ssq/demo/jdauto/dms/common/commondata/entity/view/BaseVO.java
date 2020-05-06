@@ -1,4 +1,4 @@
-package com.ssq.demo.jdauto.dms.common.entity.view;
+package com.ssq.demo.jdauto.dms.common.commondata.entity.view;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -6,17 +6,15 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
-
 /**
- * @ Author : 苏诗淇
- * @ CreateDate: 2020/4/25 10:55 下午
- * @ Description: 基础视图
+ * @Author: 苏诗淇
+ * @CreateDate: 2020/5/6 9:47 下午
+ * @Description: 基础视图
  */
-
 @Data
 @ToString
 @EqualsAndHashCode
-public class BaseVo implements Serializable {
+public class BaseVO implements Serializable {
 
     /**
      * 主键id
@@ -26,7 +24,7 @@ public class BaseVo implements Serializable {
     /**
      * 创建人
      */
-    private String createdBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -36,10 +34,10 @@ public class BaseVo implements Serializable {
     /**
      * 更新人
      */
-    private String updateBy;
+    private String updatedBy;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private Date updatedTime;
 }

@@ -1,4 +1,4 @@
-package com.ssq.demo.jdauto.dms.common.entity.data;
+package com.ssq.demo.jdauto.dms.common.commondata.entity.data;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,11 +11,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ Author: 苏诗淇
- * @ CreateDate: 2020/4/25 10:34 下午
- * @ Description: 基本数据
+ * @Author: 苏诗淇
+ * @CreateDate: 2020/5/6 9:46 下午
+ * @Description: 基本数据
  */
-
 @Data
 @ToString
 @EqualsAndHashCode
@@ -42,13 +41,12 @@ public class BaseDO implements Serializable {
     /**
      * 更新人
      */
-    @TableField(value = "update_by")
-    private String updateBy;
+    @TableField(value = "updated_by")
+    private String updatedBy;
 
     /**
      * 更新时间
      */
-    @TableField(value = "update_time")
-    private Date updateTime;
-
+    @TableField(value = "updated_time")
+    private Date updatedTime;
 }
