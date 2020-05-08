@@ -1,0 +1,17 @@
+spring:
+  datasource:
+#    dynamic:
+#      #设置默认的数据源或者数据源组,默认值即为master
+#      primary: wf
+#      datasource:
+#        dms:
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dms?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 12345678
+    type: com.alibaba.druid.pool.DruidDataSource
+
+logging:
+  level:
+    com.ssq.demo.jdauto: debug
+

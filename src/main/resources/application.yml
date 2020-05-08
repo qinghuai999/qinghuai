@@ -1,0 +1,35 @@
+server:
+  # 配置端口号
+  port: 8080
+
+spring:
+  profiles:
+    active:
+    - dev
+
+  # 项目名称
+  application:
+    name: boot-demo
+
+  messages:
+    basename: i18n/ErrorCodeMessage
+  jackson:
+    serialization:
+      # 忽略无法转换的对象
+      fail_on_empty_beans: false
+
+mybatis-plus:
+  configuration:
+    # 全局的开启或关闭配置文件中的所有映射器已经配置的任何缓存
+    # cache-enable: false
+    # 如果查询结果中包含空值的列,则MyBatis在映射的时候不会映射该字段
+    call-setters-on nulls: true
+    # 打印执行的sql,开发测试时可用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    banner: false
+  # 配置多个mapper扫描路径,**表示任意多级目录
+  mapper-locations: classpath*:mapper/**/*.xml
+  # 项目启动会检查xml配置是否存在(只在开发时候打开)
+  check-config-location: true

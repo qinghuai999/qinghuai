@@ -66,9 +66,13 @@ public class ParamsInitUtils {
      * @param value
      */
     public static void initCreateInfo(Object object, Object value){
-        initCreateTime(object);
+        Date current = new Date();
+        // 创建信息
+        initParams(object, current, CREATE_TIMES_PARAMS);
         initCreatorId(object, value);
-        initUpdateInfo(object, value);
+        // 修改信息
+        initParams(object, current, UPDATE_TIMES_PARAMS);
+        initUpdatorId(object, value);
     }
 
     /**
