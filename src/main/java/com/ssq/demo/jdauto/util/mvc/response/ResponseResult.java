@@ -23,7 +23,7 @@ public class ResponseResult<T> implements Serializable {
     /**
      * code
      */
-    private Integer code;
+    private Long code;
 
     /**
      * 响应消息

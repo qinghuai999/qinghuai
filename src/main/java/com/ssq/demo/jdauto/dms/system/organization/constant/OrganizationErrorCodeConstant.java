@@ -6,6 +6,7 @@ package com.ssq.demo.jdauto.dms.system.organization.constant;
  */
 public class OrganizationErrorCodeConstant {
 
+    /*public static final Integer
     public static final Integer
     public static final Integer
     public static final Integer
@@ -25,6 +26,5 @@ public class OrganizationErrorCodeConstant {
     public static final Integer
     public static final Integer
     public static final Integer
-    public static final Integer
-    public static final Integer
+    public static final Integer*/
 }
