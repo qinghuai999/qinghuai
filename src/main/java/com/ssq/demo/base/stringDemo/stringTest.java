@@ -6,4 +6,10 @@ package com.ssq.demo.base.stringDemo;
  */
 public class stringTest {
     StringBuffer stringBuffer = new StringBuffer();
+
+    public static void main(String[] args) {
+        int k = 0;
+        k  = k++ + ++k + k++ + ++k;
+        System.out.println(k);
+    }
 }
