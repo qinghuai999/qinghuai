@@ -1,6 +1,7 @@
 package com.ssq.demo.base.collectionDemo;
 
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class LinkedListDemo {
