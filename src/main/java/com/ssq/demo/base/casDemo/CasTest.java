@@ -1,4 +1,5 @@
 package com.ssq.demo.base.casDemo;
+
 /**
  * @Author: 苏诗淇
  * @CreateDate: 2020/5/20 7:46 下午
@@ -8,7 +9,7 @@ public class CasTest {
     public static int count = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i<2; i++){
+        for (int i = 0; i < 2; i++) {
             new Thread(
                     new Runnable() {
                         @Override
@@ -18,7 +19,7 @@ public class CasTest {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                            for (int j = 0; j<500; j++){
+                            for (int j = 0; j < 500; j++) {
                                 synchronized (CasTest.class) {
                                     count++;
                                 }

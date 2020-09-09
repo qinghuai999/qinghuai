@@ -27,7 +27,7 @@ public class SeqQueue<T> {
     private int maxsize;
 
     /**
-     * 设置长度为i的int型队列
+     * 队列长度及参数初始化
      *
      * @param i
      */
