@@ -139,6 +139,9 @@
      + 链表不是连续存储
         1. 缺点: 对CPU缓存不友好,没有办法有效预读.
         2. 优点: 大小没有限制,天然的支持动态扩容
-                
-        
+   - 链表算法练习
+     + src/main/java/com/ssq/demo/base/dataStructure/linkedList
+        1. 单链表反转 -> reverseLinkedList
+        2. 链表中环的检测 -> 
+     
    
