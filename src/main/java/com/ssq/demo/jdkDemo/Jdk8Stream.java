@@ -1,5 +1,7 @@
 package com.ssq.demo.jdkDemo;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -97,8 +99,11 @@ public class Jdk8Stream {
      * Demo
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Jdk8Stream stream = new Jdk8Stream();
+        /**
+         * 1. stream
+         */
         List<TestStreamModel> modelList = stream.getList();
         // 去重
         System.out.println("去重前: " + modelList);
@@ -144,5 +149,33 @@ public class Jdk8Stream {
         Map<Integer, Map<Integer, Long>> collect =
                 modelList.stream().filter(t -> t.getScore() >= 60).collect(Collectors.groupingBy(t -> t.getGrade(), Collectors.groupingBy(t -> t.getClasses(), Collectors.counting())));
         System.out.println("二班级一班的及格人数为: " + collect.get(2).get(1));
+
+        // 输出数据且去重
+        List<String> distinct = modelList.stream().map(m -> m.getName()).distinct().collect(Collectors.toList());
+        System.out.println(distinct);
+
+        /**
+         * 2. 反射
+         */
+        reflex(modelList);
+    }
+
+    public static void reflex(List<TestStreamModel> modelList) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        List<TestStreamModel> test = new ArrayList<>();
+        for(TestStreamModel s : modelList) {
+            Class clazz = s.getClass();
+            System.out.println("反射信息为: " + clazz + " --- 类名: " + clazz.getName());
+            Method getName = clazz.getDeclaredMethod("getName");
+            Method getScore = clazz.getDeclaredMethod("getScore");
+            getName.setAccessible(true);
+            Object obj = getName.invoke(s);
+            String s1 = (String) obj;
+            System.out.println(s1);
+            TestStreamModel build = TestStreamModel.builder()
+                    .name(s1)
+                    .build();
+            System.out.println(build);
+            test.add(build);
+        }
     }
 }
