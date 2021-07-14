@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @Description: 基于单链表实现的LRU缓存淘汰算法
  * LRU -- 最少使用策略
  */
-public class LruCache<T> {
+public class LruCacheMiniVisits<T> {
 
     /**
      * 默认链表容量
@@ -35,7 +35,7 @@ public class LruCache<T> {
     /**
      * 无参构造初始化指针,链表初始容量和初始长度
      */
-    public LruCache() {
+    public LruCacheMiniVisits() {
         this.headNode = new SNode();
         this.capacity = DEFAULT_CAPACITY;
         this.length = 0;
@@ -45,7 +45,7 @@ public class LruCache<T> {
      * 有参构造初始化指针,指定容量和初始长度
      * @param capacity
      */
-    public LruCache(Integer capacity) {
+    public LruCacheMiniVisits(Integer capacity) {
         this.headNode = new SNode<>();
         this.capacity = capacity;
         this.length = 0;
@@ -155,7 +155,7 @@ public class LruCache<T> {
     }
 
     public static void main(String[] args) {
-        LruCache list = new LruCache();
+        LruCacheMiniVisits list = new LruCacheMiniVisits();
         Scanner sc = new Scanner(System.in);
         while (true) {
             list.add(sc.nextInt());

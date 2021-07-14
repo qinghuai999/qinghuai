@@ -142,6 +142,8 @@
    - 链表算法练习
      + src/main/java/com/ssq/demo/base/dataStructure/linkedList
         1. 单链表反转 -> reverseLinkedList
-        2. 链表中环的检测 -> 
+        2. 链表中环的检测 -> CheckCircle
+        3. 基于单链表实现的LRU缓存淘汰算法(最少使用策略) -> LruCacheMiniVisits
+        4. 循环链表实现约瑟夫环 -> JosefCircle
      
    
