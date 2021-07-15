@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import sun.security.util.Length;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 /**
@@ -37,6 +38,10 @@ public class LruCacheCircleLinked<T> {
          * 下一个的节点
          */
         private Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+        }
     }
 
     /**
@@ -56,7 +61,7 @@ public class LruCacheCircleLinked<T> {
         public void initList() {
             // end节点的前一个是head,下一个也是head,构成了一个环
             end = new Node<>(null, null, null);
-            head = new Node<>(null, null, null);
+            head = new Node<>(null, null, end);
             end.prev = head;
             end.next = head;
         }
@@ -88,9 +93,17 @@ public class LruCacheCircleLinked<T> {
         // 添加节点
         public void add(T addData) {
             // 创建节点,并让该节点与链表的最后一个节点产生联系
-            Node<T> addNode = new Node<>(addData, getNode(size - 1), end);
-            addNode.prev.next = addNode;
-            addNode.next.prev = addNode;
+            Node<T> addNode;
+            if (0 == size) {
+                addNode = new Node<>(addData);
+                head = addNode;
+                head.next = end;
+                head.prev = end;
+            } else {
+                addNode = new Node<>(addData, getNode(size - 1), end);
+                addNode.prev.next = addNode;
+                addNode.next.prev = addNode;
+            }
             size++;
         }
 
@@ -127,8 +140,110 @@ public class LruCacheCircleLinked<T> {
         }
     }
 
+    /**
+     * 通过循环链表实现LRU缓存淘汰算法 -- 最少使用策略
+     */
+    class LruCircleCache {
+        // 链表长度
+        private Integer size;
+
+        // 链表头结点
+        private Node<T> head;
+
+        // 链表尾结点
+        private Node<T> end;
+
+        // 链表初始容量
+        private final Integer DEFAULT_CAPACITY = 10;
+
+        // 链表容量
+        private Integer capacity;
+
+        // 无参构造初始化容量
+        public void initStart() {
+            this.size = 0;
+            this.capacity = DEFAULT_CAPACITY;
+            // 给头尾结点的前后结点赋值
+            end = new Node<>(null, null, null);
+            head = new Node<>(null, null, end);
+
+            // 链接头尾指针 --> 尾结点的前后都指向头结点
+            end.prev = head;
+            end.next = head;
+        }
+
+        // 有参构造初始化容量
+        public void initStart(int capacity) {
+            end = new Node<>(null, null, null);
+            head = new Node<>(null, null, end);
+            end.next = head;
+            end.prev = head;
+            this.capacity = capacity;
+            this.size = 0;
+        }
+
+        // 添加元素
+        // TODO 有问题,循环链表无法区分顺序
+        public void lruAdd(T data) {
+            // 中心思想: 判断该元素链表中是否存在
+            // 1.判断该链表是否为空,为空则直接插入元素
+            if (0 == size) {
+                add(data);
+            } else {
+                // 2.不为空则遍历整个链表,查询是否存在该元素,若不存在,直接插入结点末端
+                if (null == queryLinked(data)) {
+                    add(data);
+                } else {
+                    // 若存在则删除该节点,在头部新建,
+                }
+            }
+        }
+
+        // 查询链表中是否存在某元素
+        public Node queryLinked(T data) {
+            Node nextNode = head;
+            while (nextNode.next != null) {
+                if (data.equals(nextNode.next.data)) {
+                    return nextNode;
+                }
+                nextNode = nextNode.next;
+            }
+            return null;
+        }
+
+        // 添加元素
+        public void add(T data) {
+            if (0 == size) {
+                head = new Node<>(data);
+                end = head.next;
+                size++;
+            } else {
+                Node nextN = new Node(data);
+                end.next = nextN;
+                end = nextN.next;
+                end.next = head;
+            }
+        }
+
+        // 插入
+
+
+    }
+
     public static void main(String[] args) {
-//        new CircleLinkedList();
+        // 内部类方法调用 --> 1.外部类实例化对象
+        LruCacheCircleLinked cacheCircleLinked = new LruCacheCircleLinked();
+        // 2.实例化内部对象
+        LruCacheCircleLinked.CircleLinkedList circle = cacheCircleLinked.new CircleLinkedList();
+        circle.initList();
+        circle.add("淇");
+        circle.add("三");
+        circle.add("岁");
+        circle.print();
+
+//        LruCacheCircleLinked.LruCircleCache lruCache = cacheCircleLinked.new LruCircleCache();
+//        lruCache.initStart();
+//        lruCache.add("淇");
     }
     
 
