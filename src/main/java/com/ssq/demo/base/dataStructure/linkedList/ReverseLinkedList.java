@@ -144,15 +144,24 @@ public class ReverseLinkedList {
 
     /**
      * 反转链表
-     * @param head
+     * @param linkedList
      * @return
      */
-    public Node2 newQueryReverse(Node2 head) {
-        // 遍历链表元素
-        for (int i = 0; i < size; i++) {
-            head.next = head;
+    public Node2 newQueryReverse(Node2 linkedList) {
+        // 1.判断头结点或头结点的下一个元素是否为空,为空返回头结点
+        if (null == linkedList || null == linkedList.next) {
+            return linkedList;
         }
-        return null;
+        // 2.定义两个节点
+        Node2 prevNode = null;
+        Node2 nextNode;
+        while (null != head) {
+            nextNode = linkedList.next;
+            linkedList.next = prevNode;
+            prevNode = linkedList;
+            linkedList = nextNode;
+        }
+        return prevNode;
     }
 
     public static void main(String[] args) {
@@ -191,6 +200,11 @@ public class ReverseLinkedList {
         reverseLinkedList.add("很");
         reverseLinkedList.add("好");
         reverseLinkedList.print();
+        Node2 reverseList = reverseLinkedList.newQueryReverse(reverseLinkedList.head);
+        while (null != reverseList) {
+            System.out.println(reverseList.data);
+            reverseList = reverseList.next;
+        }
 
     }
 }
