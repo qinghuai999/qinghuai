@@ -143,7 +143,7 @@ public class ReverseLinkedList {
     }
 
     /**
-     * 反转链表
+     * 反转链表 --> 遍历法
      * @param linkedList
      * @return
      */
@@ -155,13 +155,33 @@ public class ReverseLinkedList {
         // 2.定义两个节点
         Node2 prevNode = null;
         Node2 nextNode;
-        while (null != head) {
+        while (null != linkedList) {
             nextNode = linkedList.next;
             linkedList.next = prevNode;
             prevNode = linkedList;
             linkedList = nextNode;
         }
         return prevNode;
+    }
+
+    /**
+     * 反转链表 --> 递归法
+     *      递归概念: 从开始遍历到结尾,再从结尾回到开始
+     *          递归会将每一次调用自己的数据暂存到内存中,直到找到出口,在从最后一个开始循环回到第一个
+     * @param linkedList
+     * @return
+     */
+    public Node2 newAddReverse(Node2 linkedList) {
+        if (null == linkedList || null == linkedList.next) {
+            return linkedList;
+        }
+        Node2 temp = linkedList.next;
+        // 正序遍历链表
+        Node2 newHead = newAddReverse(linkedList.next);
+        System.out.println(newHead);
+        temp.next = linkedList;
+        linkedList.next = null;
+        return newHead;
     }
 
     public static void main(String[] args) {
@@ -200,7 +220,14 @@ public class ReverseLinkedList {
         reverseLinkedList.add("很");
         reverseLinkedList.add("好");
         reverseLinkedList.print();
-        Node2 reverseList = reverseLinkedList.newQueryReverse(reverseLinkedList.head);
+//        Node2 reverseList = reverseLinkedList.newQueryReverse(reverseLinkedList.head);
+//        // 遍历法
+//        while (null != reverseList) {
+//            System.out.println(reverseList.data);
+//            reverseList = reverseList.next;
+//        }
+        // 递归法
+        Node2 reverseList = reverseLinkedList.newAddReverse(reverseLinkedList.head);
         while (null != reverseList) {
             System.out.println(reverseList.data);
             reverseList = reverseList.next;
