@@ -57,21 +57,22 @@ public class ReverseLinkedList {
     }
 
     /**
-     * TODO 递归法
+     * 递归法
      *       - 原:正向遍历整个链表,取到链表最后一个结点做头结点
      *       - 现:没理解递归是怎么把结点返回去的,暂时挂起
-     * @param head
+     * @param linkedList
      * @return
      */
-    public static Node reverseByRecursion(Node head) {
-        if (null == head || null == head.next) {
-            return head;
+    public static Node reverseByRecursion(Node linkedList) {
+        if (null == linkedList || null == linkedList.next) {
+            return linkedList;
         }
-        Node temp = head.next;
+        Node temp = linkedList.next;
         // 遍历正序链表
-        Node newHead = reverseByRecursion(head.next);
-        temp.next = head;
-        head.next = null;
+        Node newHead = reverseByRecursion(linkedList.next);
+        temp.next = linkedList;
+        // 只保留链表中的当前节点元素,与后续节点断开连接[抛弃]
+        linkedList.next = null;
         return newHead;
     }
 
@@ -168,6 +169,34 @@ public class ReverseLinkedList {
      * 反转链表 --> 递归法
      *      递归概念: 从开始遍历到结尾,再从结尾回到开始
      *          递归会将每一次调用自己的数据暂存到内存中,直到找到出口,在从最后一个开始循环回到第一个
+     *      递归运行机制:
+     *          1.从开始调用自己,直到满足结束递归的出口条件,跳出循环,本次递归数据随着返回值出栈
+     *          2.拿到上一个栈的数据执行递归之后的逻辑代码,直到将所有的栈都处理完成.
+     *      递归反转逻辑:
+     *          1.从头开始遍历链表,直到找到最后一个元素
+     *          2.返回最后一个元素值
+     *          3.从栈中取出上一个节点值,反转链表 [让链表头结点的指针指向下下个,断开头节点与下个节点的联系]
+     *          4.循环到所有节点出栈
+     *      图解:
+     *          入栈1: 1->2->3->4->5->null
+     *          入栈2: 2->3->4->5->null
+     *          入栈3: 3->4->5->null
+     *          入栈4: 4->5->null
+     *          入栈5: 5->null
+     *          出栈5: 找到递归出口的返回值,返回链表 linkedList = 5->null
+     *          出栈4: linkedList 4->5->null
+     *                 新节点 = linkedList.next = 5
+     *                 head.next.next [4.next.next = null]
+     *                 此时将head赋值下下个指针,head.next.next = 4
+     *                 head.next = null  [4->5变为4 5 两个节点断开了]
+     *                 返回新节点: 5
+     *          出栈3: linkedList 3->4->null
+     *                 新节点 = linkedList.next = 4
+     *                 head.next.next = 3
+     *                 head.next = null [3->4变为3 4 两个节点又断开了]
+     *                 返回新结点: 5->4
+     *          出栈2: 按上述步骤类推即可
+     *
      * @param linkedList
      * @return
      */
@@ -175,12 +204,11 @@ public class ReverseLinkedList {
         if (null == linkedList || null == linkedList.next) {
             return linkedList;
         }
-        Node2 temp = linkedList.next;
-        // 正序遍历链表
         Node2 newHead = newAddReverse(linkedList.next);
         System.out.println(newHead);
-        temp.next = linkedList;
+        linkedList.next.next = linkedList;
         linkedList.next = null;
+        System.out.println(linkedList);
         return newHead;
     }
 
