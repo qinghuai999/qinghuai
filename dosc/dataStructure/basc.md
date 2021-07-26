@@ -160,10 +160,11 @@
    - 链表算法练习
      + src/main/java/com/ssq/demo/base/dataStructure/linkedList
         1. 单链表反转 -> ReverseLinkedList
-        2. 链表中环的检测 -> CheckCircle
-        3. 基于单链表实现的LRU缓存淘汰算法(最少使用策略) -> LruCacheMiniVisits
-        4. 循环链表实现约瑟夫环 -> JosefCircle
-        5. 循环链表的实现方式(未完) -> LruCacheCircleLinked
+        2. 链表中环的检测,并寻找入环点(此代码搬网上解法,有问题) -> CheckCircle
+        3. 判断两链表是否相交,并找出相交点 --> MargeLinkedList
+        4. 基于单链表实现的LRU缓存淘汰算法(最少使用策略) -> LruCacheMiniVisits
+        5. 循环链表实现约瑟夫环 -> JosefCircle
+        6. 循环链表的实现方式(未完) -> LruCacheCircleLinked
 ###### 3.栈
    - 递归
      + 递归定义: 自己调用自己的过程,但需要有一个出口.否则会将栈溢出
