@@ -169,7 +169,38 @@ public class CheckCircle<T> {
         }
     }
 
-
+    /**
+     * TODO 寻找链表的入环点(网上代码验证有问题,陷入死循环)
+     * @param linkedList
+     * @return
+     */
+    public T circleData(Node<T> linkedList) {
+        // 1.判断该链表是否为空或者只有一个节点
+        if (null == linkedList || null == linkedList.next) {
+            return null;
+        }
+        // 2.判断该链表是否有环
+        Node<T> slowN = linkedList;
+        Node<T> quickN = linkedList.next;
+        while (null != quickN || null != quickN.next) {
+            slowN = slowN.next;
+            quickN = quickN.next.next;
+            // 若有找出相汇点
+            if (slowN == quickN) {
+                // 使慢指针重新指向头结点
+                quickN = linkedList;
+                // 当两节点不相等时
+                while (quickN != slowN) {
+                    // 快慢指针每次分别往下走一个节点
+                    quickN = quickN.next;
+                    slowN = slowN.next;
+                }
+                // 相等返回
+                return slowN.data;
+            }
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         CheckCircle checkCircle = new CheckCircle();
@@ -183,8 +214,9 @@ public class CheckCircle<T> {
         CheckCircle.Node newHead = checkCircle.head;
         checkCircle.queryNode(null, 7).next = checkCircle.queryNode(null, 5);
         // 执行环检测
-        Boolean isCircle = checkCircle.isCircle(newHead);
+//        Boolean isCircle = checkCircle.isCircle(newHead);
 //        Boolean isCircle = checkCircle.isCircleFootprint(node1, 1);
+        Object isCircle = checkCircle.circleData(newHead);
         System.out.println(isCircle);
 
     }
