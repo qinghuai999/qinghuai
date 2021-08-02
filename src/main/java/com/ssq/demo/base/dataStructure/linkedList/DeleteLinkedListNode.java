@@ -67,8 +67,7 @@ public class DeleteLinkedListNode<T> {
                 linkedList.next = newNode;
             }
         }
-
-        // 将data插入当前节点的下一个
+        size++;
     }
 
     /**
@@ -105,6 +104,70 @@ public class DeleteLinkedListNode<T> {
         return linkedList;
     }
 
+    /**
+     * 删除倒数第n个结点之计算链表长度法
+     *   思路:
+     *      1.先遍历链表,得到该链表长度
+     *      2.判断索引大小是否符合条件,找到要删除节点的前一个
+     *      3.改变指针位置
+     *      4.TODO 输出变更后的链表 (数据传递还是没弄懂)
+     * @param index
+     * @return
+     */
+    public Node<T> deleteNode(Integer index, Node<T> linkedList) {
+        Node<T> nowLinked = linkedList;
+        if (null == linkedList) {
+            return null;
+        }
+        Node<T> temp = nowLinked;
+        // 判断索引是否超过链表长度
+        if (index > 0 && index <= size) {
+            // 将链表倒序遍历或算出正序索引,并找出要删除节点的前一个
+            for (int q = 0; q < size-index-1; q++) {
+                temp = temp.next;
+            }
+        }
+        // 删除该元素,判断该节点是否为尾结点/头结点
+        if (null == temp.next || size-index-1 < 0) {
+            temp = null;
+        } else {
+            temp.next = temp.next.next;
+        }
+        Node<T> node = nowLinked;
+        return node;
+    }
+
+    /**
+     * 删除倒数第n个节点之快慢指针法
+     *   思路:
+     *      1.定义两个指针,初始值都指向头结点
+     *      2.快指针先走n个节点
+     *      3.然后快慢指针一起走,等快指针的下一个节点为空的时候退出循环
+     *      4.此时慢指针的位置就是要删除的节点的前一个,改变指针位置即可
+     * @param index
+     * @param linkedList
+     * @return
+     */
+    public Node<T> doublePointerDelete(Integer index, Node<T> linkedList) {
+        Node<T> nowNode = linkedList;
+        if (null == linkedList) {
+            return null;
+        }
+        Node<T> quick = nowNode;
+        Node<T> slow = nowNode;
+        for (int i = 0; i < index; i++) {
+            quick = quick.next;
+        }
+        while (null != quick.next) {
+            quick = quick.next;
+            slow = slow.next;
+        }
+        Node<T> tempPrev = slow;
+        tempPrev.next = tempPrev.next.next;
+
+        return nowNode;
+    }
+
     public static void main(String[] args) {
         DeleteLinkedListNode deleteLinkedListNode = new DeleteLinkedListNode();
         String str = "杏,花,弦,外,雨";
@@ -112,6 +175,8 @@ public class DeleteLinkedListNode<T> {
         for (String s : split) {
             deleteLinkedListNode.add(s, null, null);
         }
+        DeleteLinkedListNode.Node deleteNode = deleteLinkedListNode.doublePointerDelete(3, deleteLinkedListNode.head);
+        System.out.println(deleteNode);
     }
 
 }
