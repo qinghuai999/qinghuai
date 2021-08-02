@@ -2,7 +2,8 @@
     ReverseLinkedList --> 单链表反转 1.递归法(本质是栈实现)  2.遍历法
     CheckCircle --> 链表中的环检测 - 判断一个链表中是否存在闭环,并寻找入环点(此代码搬网上解法,有问题)
     MargeLinkedList --> 判断两链表是否相交,并找出相交点
-    DeleteLinkedListNode --> 删除链表倒数第n个节点
+    DeleteLinkedListNode --> 删除链表倒数第n个节点 1.遍历法  2.快慢指针法
+    LinkedListMiddle --> 求链表中间的节点  1.遍历法  2,快慢指针法
     LruCacheMiniVisits --> 基于单链表实现的LRU缓存淘汰算法(最少使用策略)
     JosefCircle --> 循环链表实现约瑟夫环
     LruCacheCircleLinked --> 循环链表的实现方式(未完)

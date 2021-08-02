@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
  * @Author: 苏诗淇
  * @CreateDate: 2021-07-27 20:02:51
  * @Description: 删除链表倒数第n个节点
+ *                  方法一: 遍历法
+ *                  方法二: 快慢指针法
  */
 public class DeleteLinkedListNode<T> {
     /**

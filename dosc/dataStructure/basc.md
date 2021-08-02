@@ -163,6 +163,7 @@
         2. 链表中环的检测,并寻找入环点(此代码搬网上解法,有问题) -> CheckCircle
         3. 判断两链表是否相交,并找出相交点 --> MargeLinkedList
         4. 删除链表倒数第n个节点 --> DeleteLinkedListNode
+        5. 求链表中间的节点 --> LinkedListMiddle
         4. 基于单链表实现的LRU缓存淘汰算法(最少使用策略) -> LruCacheMiniVisits
         5. 循环链表实现约瑟夫环 -> JosefCircle
         6. 循环链表的实现方式(未完) -> LruCacheCircleLinked
