@@ -12,7 +12,7 @@ package com.ssq.demo.base.datastructure.sort;
  */
 public class SelectionSort {
     public void selectionSort(int[] data) {
-        if (data.length == 0) {
+        if (data.length <= 1) {
             return;
         }
         // 1.找到原始数组内最小的元素
