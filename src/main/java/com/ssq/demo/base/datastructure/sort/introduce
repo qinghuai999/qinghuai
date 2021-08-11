@@ -1,3 +1,5 @@
 排序算法 -->
     冒泡排序 --> BubbleSort
     插入排序 --> InsertionSort
+    选择排序 --> SelectionSort
+    希尔排序 --> ShellSort
