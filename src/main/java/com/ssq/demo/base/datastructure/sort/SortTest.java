@@ -46,7 +46,8 @@ public class SortTest {
                     break;
                 }
             }
-            // TODO 理解不透彻,默写代码时写成了data[j] = data[i].请在重点理解该行
+            // 理解不透彻,重写代码时写成了data[j] = data[i].请在重点理解该行
+            // 因为j为当前元素的前一个,所以要+1,将元素放到当前位置
             data[j+1] = data[i];
         }
     }
