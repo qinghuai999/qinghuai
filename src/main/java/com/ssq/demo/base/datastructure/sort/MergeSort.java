@@ -4,7 +4,10 @@ package com.ssq.demo.base.datastructure.sort;
  * @CreateDate: 2021-08-12 14:20:40
  * @Description: 归并排序
  *                  思路:
- *                      1.
+ *                      1.本质上是递归,先从原数组中找到数组中间下标.
+ *                      2.从左半边的元素中找到中点,继续递归,直到左半边起点和终点相等,跳出递归
+ *                      3.然后判断右半边是否也起点终点相等,若相等执行后续代码.
+ *                      4.执行完后从栈中取出上一层的元素下标,判断是否拆分成最小元素,若最小元素执行完后将左右两段元素整体排序
  */
 public class MergeSort {
     /**
@@ -86,8 +89,8 @@ public class MergeSort {
 
     public static void main(String[] args) {
         MergeSort mergeSort = new MergeSort();
-        int[] a = {5,9,1,6,4,3,11,7};
-        mergeSort.mergeSortInternally(a,0, 7);
+        int[] a = {3, 2, 6, 4, 5, 1, 9, 20, 13};
+        mergeSort.mergeSortInternally(a,0, 8);
         for (int b : a) {
             System.out.println(b);
         }
