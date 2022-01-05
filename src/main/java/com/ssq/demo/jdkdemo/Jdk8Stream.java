@@ -1,8 +1,12 @@
 package com.ssq.demo.jdkdemo;
 
+import com.google.common.collect.Lists;
+import org.springframework.util.CollectionUtils;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,11 +25,12 @@ public class Jdk8Stream {
 
         // 写入数据
         TestStreamModel testStreamModel = new TestStreamModel();
-        testStreamModel.setId(2);/*主键*/
-        testStreamModel.setName("张三");/*姓名*/
-        testStreamModel.setClasses(1);/*班级*/
-        testStreamModel.setGrade(1);/*年级*/
-        testStreamModel.setScore(80);/*成绩*/
+        testStreamModel.setId(2);
+        testStreamModel.setName("张三");
+        testStreamModel.setClasses(1);
+        testStreamModel.setGrade(1);
+        testStreamModel.setScore(80);
+        testStreamModel.setNum(Lists.newArrayList(1,2,3,5,7));
         modelList.add(testStreamModel);
 
         TestStreamModel testStreamModel1 = new TestStreamModel();
@@ -34,6 +39,7 @@ public class Jdk8Stream {
         testStreamModel1.setClasses(1);
         testStreamModel1.setGrade(1);
         testStreamModel1.setScore(60);
+        testStreamModel1.setNum(Lists.newArrayList(4,5,6,1));
         modelList.add(testStreamModel1);
 
         TestStreamModel testStreamModel2 = new TestStreamModel();
@@ -133,6 +139,7 @@ public class Jdk8Stream {
         // 分组 按字段中某属性将list分组
         Map<Integer, List<TestStreamModel>> groupByList = modelList.stream().collect(Collectors.groupingBy(t -> t.getGrade()));
         System.out.println("按年级分组; " + groupByList);
+        System.out.println("取Map内所有Key: " + groupByList.keySet());
         // 对map进行处理,方便取出数据
         for (Map.Entry<Integer, List<TestStreamModel>> entry : groupByList.entrySet()){
             System.out.println("Key: " + entry.getKey());
@@ -154,10 +161,20 @@ public class Jdk8Stream {
         List<String> distinct = modelList.stream().map(m -> m.getName()).distinct().collect(Collectors.toList());
         System.out.println(distinct);
 
+        // 升序排序, 只取第一条
+        modelList.stream().map(x -> x.getScore()).sorted(Comparator.comparing(Double::doubleValue)).findFirst().orElse(null);
+        // 降序排序
+        modelList.stream().map(x -> x.getScore()).sorted(Comparator.reverseOrder()).findFirst().orElse(null);
+        // 降序写法二
+        modelList.stream().map(x -> x.getScore()).sorted(Comparator.comparing(Double::doubleValue).reversed()).collect(Collectors.toList());
+
+        // 统计List中嵌套List元素的总数
+        int insideListSize = modelList.stream().filter(x -> !CollectionUtils.isEmpty(x.getNum())).mapToInt(x -> x.getNum().size()).sum();
+        System.out.println("统计该stream中List元素的总数: " + insideListSize);
         /**
          * 2. 反射
          */
-        reflex(modelList);
+//        reflex(modelList);
     }
 
     public static void reflex(List<TestStreamModel> modelList) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {

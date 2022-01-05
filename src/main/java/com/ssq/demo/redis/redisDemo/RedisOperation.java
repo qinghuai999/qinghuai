@@ -12,13 +12,4 @@ import java.util.*;
  */
 public class RedisOperation {
 
-    public static void main(String[] args) {
-        Calendar endCalender = Calendar.getInstance();
-        endCalender.add(Calendar.DATE, -1);
-        endCalender.set(Calendar.HOUR_OF_DAY, 23);
-        endCalender.set(Calendar.MINUTE, 59);
-        endCalender.set(Calendar.SECOND, 59);
-        endCalender.set(Calendar.MILLISECOND, 999);
-        System.out.println(endCalender.getTime());
-    }
 }

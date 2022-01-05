@@ -1,4 +1,4 @@
-package com.ssq.demo.base.datatype.stringDemo;
+package com.ssq.demo.base.datatype.stringdemo;
 
 /**
  * @Author: 苏诗淇

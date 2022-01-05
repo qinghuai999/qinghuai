@@ -1,4 +1,4 @@
-package com.ssq.demo.base.datatype.integerDemo;
+package com.ssq.demo.base.datatype.integerdemo;
 /**
  * @Author: 苏诗淇
  * @CreateDate: 2020/5/16 2:11 下午
