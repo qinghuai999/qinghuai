@@ -1,4 +1,4 @@
-package com.ssq.demo.base.datastructure.coursera;
+package com.ssq.demo.base.datastructure.coursera.firstweek;
 
 import java.io.BufferedReader;
 import java.io.IOException;

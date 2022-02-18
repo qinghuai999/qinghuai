@@ -1,4 +1,4 @@
-package com.ssq.demo.base.datastructure.coursera;
+package com.ssq.demo.base.datastructure.coursera.secondweek;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
