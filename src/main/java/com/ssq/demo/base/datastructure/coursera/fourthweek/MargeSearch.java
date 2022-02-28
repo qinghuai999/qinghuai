@@ -19,7 +19,7 @@ public class MargeSearch {
         int[] searchIndex = new int[secondData.length];
         // 1. 二分法
         int left = 0, right = firstArray.length - 1;
-        int[] margeArray = devideArray(firstArray, left, right);
+        int[] margeArray = divideArray(firstArray, left, right);
         // 根据有序数组找出匹配的索引下标 TODO 用二分查找效率更高
         for (int j = 0; j < secondData.length; j++) {
             for (int i = 0; i < margeArray.length; i++) {
@@ -42,7 +42,7 @@ public class MargeSearch {
      * @param rightIndex
      * @return
      */
-    private static int[] devideArray(int[] array, int leftIndex, int rightIndex) {
+    private static int[] divideArray(int[] array, int leftIndex, int rightIndex) {
         // 递归出口
         if (leftIndex >= rightIndex) {
             return array;
@@ -50,8 +50,8 @@ public class MargeSearch {
 
         // 求中间值是最关键
         int middle = leftIndex + (rightIndex - leftIndex) / 2;
-        devideArray(array, leftIndex, middle);
-        devideArray(array, middle + 1, rightIndex);
+        divideArray(array, leftIndex, middle);
+        divideArray(array, middle + 1, rightIndex);
         // 合并数组
         int[] margeSort = margeSort(array, leftIndex, rightIndex, middle);
         return margeSort;
