@@ -131,12 +131,12 @@
         </dependency>
 
         <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>2.1.9.RELEASE</version>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--            <version>3.2.1.RELEASE</version>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
 
         <!-- redission 分布式锁-->
         <dependency>
@@ -181,6 +181,11 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.11.1</version>
+        </dependency>
 
     </dependencies>
 
