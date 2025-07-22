@@ -24,8 +24,10 @@
 // Related Topics 数学
 
 
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
     public int reverse(int x) {
         int rev = 0;
         while(x!=0){

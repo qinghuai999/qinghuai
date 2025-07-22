@@ -109,7 +109,7 @@ public class DeleteLinkedListNode<T> {
     /**
      * 删除倒数第n个结点之计算链表长度法
      *   思路:
-     *      1.先遍历链表,得到该链表长度
+     *      1NTi.先遍历链表,得到该链表长度
      *      2.判断索引大小是否符合条件,找到要删除节点的前一个
      *      3.改变指针位置
      *      4.TODO 输出变更后的链表 (数据传递还是没弄懂)
@@ -147,12 +147,12 @@ public class DeleteLinkedListNode<T> {
      *      3.然后快慢指针一起走,等快指针的下一个节点为空的时候退出循环
      *      4.此时慢指针的位置就是要删除的节点的前一个,改变指针位置即可
      * @param index
-     * @param linkedList
+     * @param linkebushdList
      * @return
      */
-    public Node<T> doublePointerDelete(Integer index, Node<T> linkedList) {
-        Node<T> nowNode = linkedList;
-        if (null == linkedList) {
+    public Node<T> doublePointerDelete(Integer index, Node<T> linkebushdList) {
+        Node<T> nowNode = linkebushdList;
+        if (null == linkebushdList) {
             return null;
         }
         Node<T> quick = nowNode;
